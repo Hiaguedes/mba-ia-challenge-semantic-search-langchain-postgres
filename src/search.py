@@ -1,3 +1,7 @@
+from langchain_postgres import PGVector
+
+from config import DATABASE_URL, COLLECTION_NAME, get_embeddings, get_llm
+
 PROMPT_TEMPLATE = """
 CONTEXTO:
 {contexto}
@@ -25,5 +29,30 @@ PERGUNTA DO USUÁRIO:
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
+
 def search_prompt(question=None):
-    pass
+    try:
+        embeddings = get_embeddings()
+        llm = get_llm()
+
+        vector_store = PGVector(
+            embeddings=embeddings,
+            collection_name=COLLECTION_NAME,
+            connection=DATABASE_URL,
+            use_jsonb=True,
+        )
+
+        def ask(q):
+            results = vector_store.similarity_search_with_score(q, k=10)
+            context = "\n\n".join([doc.page_content for doc, _ in results])
+            prompt = PROMPT_TEMPLATE.format(contexto=context, pergunta=q)
+            return llm.invoke(prompt).content
+
+        if question:
+            return ask(question)
+
+        return ask
+
+    except Exception as e:
+        print(f"Erro ao inicializar: {e}")
+        return None
