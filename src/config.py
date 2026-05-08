@@ -14,7 +14,7 @@ def get_embeddings():
         return OpenAIEmbeddings(model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small"))
     elif os.getenv("GOOGLE_API_KEY"):
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
-        return GoogleGenerativeAIEmbeddings(model=os.getenv("GOOGLE_EMBEDDING_MODEL", "models/embedding-001"))
+        return GoogleGenerativeAIEmbeddings(model=os.getenv("GOOGLE_EMBEDDING_MODEL", "gemini-embedding-2"))
     raise ValueError("Configure OPENAI_API_KEY ou GOOGLE_API_KEY no .env")
 
 

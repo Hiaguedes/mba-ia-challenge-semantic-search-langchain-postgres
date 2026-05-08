@@ -35,7 +35,7 @@ Modelo de embeddings: text-embedding-3-small
 Modelo de LLM para responder: gpt-5-nano
 Gemini
 Crie uma API Key da Google.
-Modelo de embeddings: models/embedding-001
+Modelo de embeddings: gemini-embedding-2
 Sugestão de modelo de LLM para responder: gemini-2.5-flash-lite ou gemini-3.1-flash-lite-preview. Você pode utilizar outro modelo do Gemini de sua preferência, desde que atinja os resultados esperados.
 Os limites de requisições gratuitas dos modelos podem mudar com frequência. Para informações atualizadas, consulte a documentação oficial do Google.
 

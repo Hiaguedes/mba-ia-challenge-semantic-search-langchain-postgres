@@ -50,7 +50,7 @@ config.py  →  shared env loading + get_embeddings() + get_llm()
 | `PDF_PATH` | `document.pdf` |
 | `OPENAI_EMBEDDING_MODEL` | `text-embedding-3-small` |
 | `OPENAI_LLM_MODEL` | `gpt-4o-mini` |
-| `GOOGLE_EMBEDDING_MODEL` | `models/embedding-001` |
+| `GOOGLE_EMBEDDING_MODEL` | `gemini-embedding-2` |
 | `GOOGLE_LLM_MODEL` | `gemini-2.0-flash-lite` |
 
 ## Stack
